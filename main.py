@@ -10,6 +10,11 @@ bg = pygame.image.load(os.path.join('images', 'bg.jpg')).convert()
 bgX1 = 0
 bgX2 = bg.get_width()
 
+class Ninja:
+    running = [pygame.image.load(os.path.join('images', str(x) + '.png')).convert() for x in range(10)]
+    jumping = [pygame.image.load(os.path.join('images', str(x) + '.png')).convert() for x in range(10,20)]
+    sliding = [pygame.image.load(os.path.join('images', str(x) + '.png')).convert() for x in range(20,30)]
+
 clock = pygame.time.Clock()
 
 def updateScreen():
