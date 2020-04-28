@@ -44,10 +44,10 @@ class Ninja:
                 self.jumping = False
                 self.runCount = 0
         elif self.sliding:
-            if self.slideCount < 50:
+            if self.slideCount < 20:
                 self.y += 1
             elif self.slideCount > 108:
-                self.y -= 49
+                self.y -= 19
                 self.sliding = False
                 self.slideCount = 0
                 self.runCount = 0
@@ -67,9 +67,9 @@ def updateScreen():
     player.draw(screen)
     pygame.display.update()
 
-player = Ninja(200, 40, 10, 10)
+player = Ninja(200, 310, 100, 100)
 
-fps = 45
+fps = 50
 run = True
 while run:
     updateScreen()
