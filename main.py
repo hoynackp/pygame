@@ -14,6 +14,28 @@ class Ninja:
     running = [pygame.image.load(os.path.join('images', str(x) + '.png')).convert() for x in range(10)]
     jumping = [pygame.image.load(os.path.join('images', str(x) + '.png')).convert() for x in range(10,20)]
     sliding = [pygame.image.load(os.path.join('images', str(x) + '.png')).convert() for x in range(20,30)]
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.jumping = False
+        self.sliding = False
+        self.sliding2 = False
+        self.slideCount = 0
+        self.jumpCount = 0
+        self.runCount = 0
+        jumpList = [1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4]
+    def draw(self, screen):
+        if self.jumping:
+            self.y -= self.jumpList[self.jumpCount] * 1.3
+            screen.blit(self.jumping[self.jumpCount//12]), (self.x, self.y)
+            self.jumpCount += 1
+            if self.jumpCount > 108:
+                self.jumpCount = 0
+                self.jumping
+        elif self.sliding:
+        else:
 
 clock = pygame.time.Clock()
 
