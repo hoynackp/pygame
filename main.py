@@ -31,7 +31,6 @@ class Ninja:
         self.height = height
         self.jumping = False
         self.sliding = False
-        self.sliding2 = False
         self.slideCount = 0
         self.jumpCount = 0
         self.runCount = 0
@@ -44,18 +43,15 @@ class Ninja:
                 self.jumpCount = 0
                 self.jumping = False
                 self.runCount = 0
-        elif self.sliding or self.sliding2:
-            if self.slideCount < 20:
+        elif self.sliding:
+            if self.slideCount < 50:
                 self.y += 1
-            elif self.slideCount == 109:
-                self.y -= 19
+            elif self.slideCount > 108:
+                self.y -= 49
                 self.sliding = False
-                self.sliding2 = True
-            if self.slideCount >= 110:
                 self.slideCount = 0
-                self.sliding2 = False
                 self.runCount = 0
-            screen.blit(self.slide_sprites[round(self.slideCount//11.1)], (self.x,self.y))
+            screen.blit(self.slide_sprites[round(self.slideCount//11)], (self.x,self.y))
             self.slideCount += 1
         else:
             if self.runCount > 32:
@@ -73,7 +69,7 @@ def updateScreen():
 
 player = Ninja(200, 40, 10, 10)
 
-fps = 60
+fps = 45
 run = True
 while run:
     updateScreen()
